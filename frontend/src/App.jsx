@@ -3,7 +3,10 @@ import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import "./App.css";
 
-const API_URL = "http://localhost:5000/api/tasks";
+// Use local backend for development, and the Render backend URL for production
+const API_URL = import.meta.env.MODE === "development" 
+  ? "http://localhost:5000/api/tasks" 
+  : import.meta.env.VITE_API_URL;
 
 function App() {
   const [tasks, setTasks] = useState([]);
